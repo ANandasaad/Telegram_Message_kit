@@ -27,7 +27,7 @@ export async function sendTelegramMessage(
     },
   );
 
-  const data = telegramSendMessageResponseSchema.parse(response.json());
+  const data = telegramSendMessageResponseSchema.parse(await response.json());
 
   if (!response.ok || !data.ok || !data.result) {
     throw new Error(data.description ?? "Telegram Message request failed");
