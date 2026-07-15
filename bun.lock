@@ -8,6 +8,19 @@
         "@types/node": "^26.1.1",
       },
     },
+    "apps/remote-mcp": {
+      "name": "MessageKit-remote-mcp",
+      "version": "0.0.0",
+      "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.29.0",
+        "MessageKit-core": "workspace:*",
+        "hono": "^4.12.30",
+        "zod": "^4.4.3",
+      },
+      "devDependencies": {
+        "@types/node": "^26.1.1",
+      },
+    },
     "packages/cli": {
       "name": "MessageKit",
       "version": "0.0.0",
@@ -51,6 +64,8 @@
     "MessageKit-core": ["MessageKit-core@workspace:packages/core"],
 
     "MessageKit-mcp": ["MessageKit-mcp@workspace:packages/local-mcp"],
+
+    "MessageKit-remote-mcp": ["MessageKit-remote-mcp@workspace:apps/remote-mcp"],
 
     "accepts": ["accepts@2.0.0", "", { "dependencies": { "mime-types": "^3.0.0", "negotiator": "^1.0.0" } }, "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng=="],
 
