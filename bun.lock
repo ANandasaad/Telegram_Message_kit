@@ -13,45 +13,53 @@
       },
     },
     "apps/remote-mcp": {
-      "name": "MessageKit-remote-mcp",
+      "name": "@anand.dev.ai/MessageKit-remote-mcp",
       "version": "0.0.0",
       "dependencies": {
+        "@anand.dev.ai/MessageKit-core": "workspace:*",
         "@clerk/backend": "^3.11.5",
         "@clerk/express": "^2.1.41",
         "@clerk/mcp-tools": "^0.6.0",
         "@modelcontextprotocol/sdk": "^1.29.0",
-        "MessageKit-core": "workspace:*",
         "hono": "^4.12.30",
         "zod": "^4.4.3",
       },
     },
     "packages/cli": {
-      "name": "MessageKit",
+      "name": "@anand.dev.ai/MessageKit",
       "version": "0.0.0",
       "dependencies": {
-        "MessageKit-core": "workspace:*",
+        "@anand.dev.ai/MessageKit-core": "workspace:*",
         "commander": "^15.0.0",
         "zod": "^4.4.3",
       },
     },
     "packages/core": {
-      "name": "MessageKit-core",
+      "name": "@anand.dev.ai/MessageKit-core",
       "version": "0.0.0",
       "dependencies": {
         "zod": "^4.4.3",
       },
     },
     "packages/local-mcp": {
-      "name": "MessageKit-mcp",
+      "name": "@anand.dev.ai/MessageKit-mcp",
       "version": "0.0.0",
       "dependencies": {
+        "@anand.dev.ai/MessageKit-core": "workspace:*",
         "@modelcontextprotocol/sdk": "^1.29.0",
-        "MessageKit-core": "workspace:*",
         "zod": "^4.4.3",
       },
     },
   },
   "packages": {
+    "@anand.dev.ai/MessageKit": ["@anand.dev.ai/MessageKit@workspace:packages/cli"],
+
+    "@anand.dev.ai/MessageKit-core": ["@anand.dev.ai/MessageKit-core@workspace:packages/core"],
+
+    "@anand.dev.ai/MessageKit-mcp": ["@anand.dev.ai/MessageKit-mcp@workspace:packages/local-mcp"],
+
+    "@anand.dev.ai/MessageKit-remote-mcp": ["@anand.dev.ai/MessageKit-remote-mcp@workspace:apps/remote-mcp"],
+
     "@clerk/backend": ["@clerk/backend@3.11.5", "", { "dependencies": { "@clerk/shared": "^4.25.3", "standardwebhooks": "^1.0.0", "tslib": "2.8.1" } }, "sha512-HEpf9XlEna1uK+JhFSvIseyvviO1C4rdjv8qe3CSu/qSNMCZD69BSA12IkwBrXuopbrmngNFv/unsNV9jcUepw=="],
 
     "@clerk/express": ["@clerk/express@2.1.41", "", { "dependencies": { "@clerk/backend": "^3.11.5", "@clerk/shared": "^4.25.3", "tslib": "2.8.1" }, "peerDependencies": { "express": "^4.17.0 || ^5.0.0" } }, "sha512-z6P6OzTfa6v+Z0PQLHppuHwk08sj2eTPkCqjp15PYRLGxuQYwolm548wiTnBFS+/3t8HvsbyMhXT/LimbRct3Q=="],
@@ -277,14 +285,6 @@
     "@yuku-parser/binding-win32-x64": ["@yuku-parser/binding-win32-x64@0.6.3", "", { "os": "win32", "cpu": "x64" }, "sha512-NcqZwBXQhKyfC0Eb+yBxXQcPjZoUstD1Dbr3X4UlOD1QiYfnvAYRKCZJ6nQ6KQ5p30dGaKkQeBL4t3qQtDQNWA=="],
 
     "@yuku-toolchain/types": ["@yuku-toolchain/types@0.5.43", "", {}, "sha512-kSpvPntnXw5+lYjO71ffBEnQ5ycQ74KGIYknh0TS4xeyCuBkOqxyJumxZkMhLBBUCLjDAbx2+Icnr3Zh4ftjpQ=="],
-
-    "MessageKit": ["MessageKit@workspace:packages/cli"],
-
-    "MessageKit-core": ["MessageKit-core@workspace:packages/core"],
-
-    "MessageKit-mcp": ["MessageKit-mcp@workspace:packages/local-mcp"],
-
-    "MessageKit-remote-mcp": ["MessageKit-remote-mcp@workspace:apps/remote-mcp"],
 
     "accepts": ["accepts@2.0.0", "", { "dependencies": { "mime-types": "^3.0.0", "negotiator": "^1.0.0" } }, "sha512-5cvg6CtKwfgdmVqY1WIiXKc3Q1bkRqGLi+2W/6ao+6Y7gu/RCwRuAhGEzh5B4KlszSuTLgZYuqFqo5bImjNKng=="],
 

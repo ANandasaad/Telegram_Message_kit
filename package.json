@@ -14,6 +14,10 @@
     "dev:cli": "bun run packages/cli/src/index.ts",
     "dev:local-mcp": "bun run packages/local-mcp/src/index.ts",
     "dev:remote-mcp": "bun run apps/remote-mcp/src/index.ts",
+    "build:core": "bun run --filter @anand.dev.ai/MessageKit-core build",
+    "build:cli": "bun run --filter @anand.dev.ai/MessageKit build",
+    "build:local-mcp": "bun run --filter @anand.dev.ai/MessageKit-mcp build",
+
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
