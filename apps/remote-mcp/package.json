@@ -1,21 +1,18 @@
 {
-    "name": "MessageKit-remote-mcp",
-    "version": "0.0.0",
-    "private": "true",
-    "type": "module",
-    "exports": {
-        ".": "./src/index.ts"
-    },
-    "dependencies": {
-        "@clerk/backend": "^3.11.5",
-        "@clerk/express": "^2.1.41",
-        "@clerk/mcp-tools": "^0.6.0",
-        "@modelcontextprotocol/sdk": "^1.29.0",
-        "MessageKit-core": "workspace:*",
-        "hono": "^4.12.30",
-        "zod": "^4.4.3"
-    },
-    "devDependencies": {
-        "@types/node": "^26.1.1"
-    }
+  "name": "MessageKit-remote-mcp",
+  "version": "0.0.0",
+  "private": "true",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@clerk/backend": "^3.11.5",
+    "@clerk/express": "^2.1.41",
+    "@clerk/mcp-tools": "^0.6.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "MessageKit-core": "workspace:*",
+    "hono": "^4.12.30",
+    "zod": "^4.4.3"
+  }
 }

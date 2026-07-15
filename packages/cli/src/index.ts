@@ -13,13 +13,9 @@ const cliConfigSchema = z.object({
 
 function writeTelegramBotToken(token: string) {
   mkdirSync(dirname(configPath), { recursive: true });
-  writeFileSync(
-    configPath,
-    `${JSON.stringify({ telegramBotToken: token }, null, 2)}\n`,
-    {
-      mode: 0o600,
-    },
-  );
+  writeFileSync(configPath, `${JSON.stringify({ telegramBotToken: token }, null, 2)}\n`, {
+    mode: 0o600,
+  });
 }
 
 function getTelegramBotToken() {
@@ -27,9 +23,7 @@ function getTelegramBotToken() {
     throw new Error("Telegram bot token is required. Run `messageKit init` ");
   }
 
-  const config = cliConfigSchema.parse(
-    JSON.parse(readFileSync(configPath, "utf8")),
-  );
+  const config = cliConfigSchema.parse(JSON.parse(readFileSync(configPath, "utf8")));
   const token = config.telegramBotToken;
 
   if (!token) {
@@ -61,10 +55,10 @@ program
       chatId: chatId,
     });
 
-    console.log(JSON.stringify(result))
+    console.log(JSON.stringify(result));
   });
 
-await program.parseAsync(process.argv).catch((error:unknown)=>{
-    console.log(error instanceof Error ? error.message : String(error))
-    process.exitCode= 1
-})
+await program.parseAsync(process.argv).catch((error: unknown) => {
+  console.log(error instanceof Error ? error.message : String(error));
+  process.exitCode = 1;
+});
