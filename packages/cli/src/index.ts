@@ -1,49 +1,70 @@
-import {Command} from "commander"
-import {sendTelegramMessage} from 'MessageKit-core'
+import { Command } from "commander";
+import { sendTelegramMessage } from "MessageKit-core";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { dirname, join } from "node:path";
+import { z } from "zod";
 
+const program = new Command();
+const configPath = join(homedir(), ".config", "messageKit", "config.json");
+const cliConfigSchema = z.object({
+  telegramBotToken: z.string().min(1).optional(),
+});
 
-const program= new Command()
+function writeTelegramBotToken(token: string) {
+  mkdirSync(dirname(configPath), { recursive: true });
+  writeFileSync(
+    configPath,
+    `${JSON.stringify({ telegramBotToken: token }, null, 2)}\n`,
+    {
+      mode: 0o600,
+    },
+  );
+}
+
+function getTelegramBotToken() {
+  if (!existsSync(configPath)) {
+    throw new Error("Telegram bot token is required. Run `messageKit init` ");
+  }
+
+  const config = cliConfigSchema.parse(
+    JSON.parse(readFileSync(configPath, "utf8")),
+  );
+  const token = config.telegramBotToken;
+
+  if (!token) {
+    throw new Error("Telegram bot token is required. Run `messageKit init`. ");
+  }
+
+  return token;
+}
+program.name("messageKit").description("MessageKit CLI backed by shared core");
 
 program
-    .name("MessageKit")
-    .description("MessageKit tutorial CLI")
-    .command("telegram")
-    .description("Send a Telegram message")
-    .argument("<chatId>", "Telegram chat ID")
-    .argument("<message>", "Message text to send")
-    .action(async (chatId: string, message:string)=>{
-        const token= process.env.TELEGRAM_BOT_TOKEN;
+  .command("init")
+  .description("Configuration MessageKit CLI local setting")
+  .requiredOption("--telegram-bot-token <botToken>", "Telegram bot token")
+  .action(async (options: { telegramBotToken: string }) => {
+    writeTelegramBotToken(options.telegramBotToken);
+    console.log(`Saved MessageKit CLI config to ${configPath}`);
+  });
 
-        if (!token){
-            console.error("Missing TELEGRAM_BOT_TOKEN enviroment variable");
-            process.exit(1)
-        }
-
-        if(!chatId)
-        {
-            console.error("Missing Telegram ChatID ")
-            process.exit(1)
-        }
-        if(!message)
-        {
-            console.error("Missing Telegram Message");
-            process.exit(1)
-        }
-
-        try {
-            const result= await sendTelegramMessage({
-            botToken:token,
-            message:message,
-            chatId:chatId
-            })
-
-            console.log(`Sent Telegram message to chat ${result.chatId}`)
-            console.log(`Telegram Message Id ${result.messageId}`)
-        } catch (error) {
-            const detail= error instanceof Error ? error.message : String(error)
-            console.log(`Telegram API Request failed ${detail}`)
-            process.exit(1)
-        }
+program
+  .command("telegram")
+  .description("Send a Telegram message")
+  .argument("<chatId>", "Telegram chat ID")
+  .argument("<message>", "Message text to send")
+  .action(async (chatId: string, message: string) => {
+    const result = await sendTelegramMessage({
+      botToken: getTelegramBotToken(),
+      message: message,
+      chatId: chatId,
     });
 
-    program.parseAsync(process.argv)
+    console.log(JSON.stringify(result))
+  });
+
+await program.parseAsync(process.argv).catch((error:unknown)=>{
+    console.log(error instanceof Error ? error.message : String(error))
+    process.exitCode= 1
+})
