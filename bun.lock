@@ -13,10 +13,10 @@
       },
     },
     "apps/remote-mcp": {
-      "name": "@anand.dev.ai/MessageKit-remote-mcp",
+      "name": "@anand.dev.ai/messagekit-remote-mcp",
       "version": "0.0.0",
       "dependencies": {
-        "@anand.dev.ai/MessageKit-core": "workspace:*",
+        "@anand.dev.ai/messagekit-core": "workspace:*",
         "@clerk/backend": "^3.11.5",
         "@clerk/express": "^2.1.41",
         "@clerk/mcp-tools": "^0.6.0",
@@ -26,39 +26,39 @@
       },
     },
     "packages/cli": {
-      "name": "@anand.dev.ai/MessageKit",
+      "name": "@anand.dev.ai/messagekit",
       "version": "0.0.0",
       "dependencies": {
-        "@anand.dev.ai/MessageKit-core": "workspace:*",
+        "@anand.dev.ai/messagekit-core": "workspace:*",
         "commander": "^15.0.0",
         "zod": "^4.4.3",
       },
     },
     "packages/core": {
-      "name": "@anand.dev.ai/MessageKit-core",
+      "name": "@anand.dev.ai/messagekit-core",
       "version": "0.0.0",
       "dependencies": {
         "zod": "^4.4.3",
       },
     },
     "packages/local-mcp": {
-      "name": "@anand.dev.ai/MessageKit-mcp",
+      "name": "@anand.dev.ai/messagekit-mcp",
       "version": "0.0.0",
       "dependencies": {
-        "@anand.dev.ai/MessageKit-core": "workspace:*",
+        "@anand.dev.ai/messagekit-core": "workspace:*",
         "@modelcontextprotocol/sdk": "^1.29.0",
         "zod": "^4.4.3",
       },
     },
   },
   "packages": {
-    "@anand.dev.ai/MessageKit": ["@anand.dev.ai/MessageKit@workspace:packages/cli"],
+    "@anand.dev.ai/messagekit": ["@anand.dev.ai/messagekit@workspace:packages/cli"],
 
-    "@anand.dev.ai/MessageKit-core": ["@anand.dev.ai/MessageKit-core@workspace:packages/core"],
+    "@anand.dev.ai/messagekit-core": ["@anand.dev.ai/messagekit-core@workspace:packages/core"],
 
-    "@anand.dev.ai/MessageKit-mcp": ["@anand.dev.ai/MessageKit-mcp@workspace:packages/local-mcp"],
+    "@anand.dev.ai/messagekit-mcp": ["@anand.dev.ai/messagekit-mcp@workspace:packages/local-mcp"],
 
-    "@anand.dev.ai/MessageKit-remote-mcp": ["@anand.dev.ai/MessageKit-remote-mcp@workspace:apps/remote-mcp"],
+    "@anand.dev.ai/messagekit-remote-mcp": ["@anand.dev.ai/messagekit-remote-mcp@workspace:apps/remote-mcp"],
 
     "@clerk/backend": ["@clerk/backend@3.11.5", "", { "dependencies": { "@clerk/shared": "^4.25.3", "standardwebhooks": "^1.0.0", "tslib": "2.8.1" } }, "sha512-HEpf9XlEna1uK+JhFSvIseyvviO1C4rdjv8qe3CSu/qSNMCZD69BSA12IkwBrXuopbrmngNFv/unsNV9jcUepw=="],
 

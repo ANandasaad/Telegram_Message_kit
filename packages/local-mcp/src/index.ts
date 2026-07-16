@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { telegramMessageInputSchema, sendTelegramMessage } from "@anand.dev.ai/MessageKit-core";

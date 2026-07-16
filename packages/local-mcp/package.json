@@ -1,17 +1,31 @@
 {
-  "name": "@anand.dev.ai/MessageKit-mcp",
-  "version": "0.0.0",
-  "private": "true",
+  "name": "@anand.dev.ai/messagekit-mcp",
+  "version": "0.0.1",
   "type": "module",
-  "exports": {
-    ".": "./src/index.ts"
+  "bin":{
+    "messagekit-mcp": "./dist/index.js"
+  },
+  "files":["dist"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+    "exports": {
+    ".": {
+      "types":"./dist/index.d.ts",
+      "import":"./dist/index.js"
+    }
   },
   "scripts": {
-    "build":"tsdown"
+    "build":"tsdown",
+    "pack:dry": "bun run build & bun pm pack --dry-run",
+    "prepublishOnly": "bun run build"
+  },
+   "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "@anand.dev.ai/MessageKit-core": "workspace:*",
+    "@anand.dev.ai/messagekit-core": "workspace:*",
     "zod": "^4.4.3"
   }
 }

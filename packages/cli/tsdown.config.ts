@@ -11,6 +11,6 @@ export default defineConfig ({
     outDir: "dist",
     outExtensions: ()=> ({js: ".js", dts: ".d.ts"}),
     deps: {
-        neverBundle:["@anand.dev.ai/MessageKit-core","commander","zod"]
+        neverBundle:["@anand.dev.ai/messagekit-core","commander","zod"]
     }
 })

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from "commander";
 import { sendTelegramMessage } from "@anand.dev.ai/MessageKit-core";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";

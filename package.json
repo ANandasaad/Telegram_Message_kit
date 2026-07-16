@@ -1,5 +1,5 @@
 {
-  "name": "MessageKit-workspace",
+  "name": "messageKit-workspace",
   "private": "true",
   "workspaces": [
     "apps/*",
@@ -11,12 +11,17 @@
     "format:check": "oxfmt . --check",
     "lint": "oxlint . --deny-warnings",
     "lint:fix": "oxlint . --fix",
+    "build:core": "bun run --filter @anand.dev.ai/messagekit-core build",
+    "build:cli": "bun run --filter @anand.dev.ai/messagekit build",
+    "build:local-mcp": "bun run --filter @anand.dev.ai/messagekit-mcp build",
     "dev:cli": "bun run packages/cli/src/index.ts",
     "dev:local-mcp": "bun run packages/local-mcp/src/index.ts",
     "dev:remote-mcp": "bun run apps/remote-mcp/src/index.ts",
-    "build:core": "bun run --filter @anand.dev.ai/MessageKit-core build",
-    "build:cli": "bun run --filter @anand.dev.ai/MessageKit build",
-    "build:local-mcp": "bun run --filter @anand.dev.ai/MessageKit-mcp build",
+    "release:pack:core": "bun run --filter @anand.dev.ai/messagekit-core pack:dry",
+    "release:pack:cli": "bun run --filter @anand.dev.ai/messagekit pack:dry",
+    "release:pack:local-mcp": "bun run --filter @anand.dev.ai/messagekit-mcp pack:dry",
+
+
 
     "typecheck": "tsc --noEmit"
   },
